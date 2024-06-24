@@ -35,7 +35,7 @@
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3>{{ $siswa }}</h3>
-                            <p>Siswa</p>
+                            <p>User</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-users"></i>
