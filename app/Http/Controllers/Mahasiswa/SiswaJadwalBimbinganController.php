@@ -46,6 +46,7 @@ class SiswaJadwalBimbinganController extends Controller
         // Check for schedule conflicts
         $conflict = JadwalBimbingan::where('id_konselor', $validated['id_konselor'])
             ->where('tgl_bimbingan', $validated['tgl_bimbingan'])
+            ->where('status', 1)
             ->exists();
 
         if ($conflict) {
