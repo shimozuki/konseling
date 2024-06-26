@@ -14,7 +14,9 @@ class SiswaJadwalBimbinganController extends Controller
 {
     public function index()
     {
-        $jadwalBimbingan = JadwalBimbingan::with('dataUser', 'konselor')->get();
+        $id = Auth::id();
+        $id_user = Siswa::select('id')->where('id_user', $id)->first();
+        $jadwalBimbingan = JadwalBimbingan::with('dataUser', 'konselor')->where('id_data_user', $id_user)->get();
 
         $data = [
             'title' => 'Halaman Jadwal Bimbingan',
