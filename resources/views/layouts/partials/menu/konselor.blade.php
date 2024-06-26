@@ -1,6 +1,25 @@
+<style>
+    .nav-link {
+        position: relative;
+        padding-left: -30px;
+        /* Tambahkan padding di sebelah kanan untuk ruang badge */
+    }
+
+    .nav-link .badge {
+        background-color: red;
+        border-radius: 50%;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+</style>
+
 <li class="nav-item">
-    <a href="{{ route('konselor/dashboard') }}"
-        class="nav-link {{ Route::currentRouteName() == 'konselor/dashboard' ? 'active' : '' }}">
+    <a href="{{ route('konselor/dashboard') }}" class="nav-link {{ Route::currentRouteName() == 'konselor/dashboard' ? 'active' : '' }}">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
             Dashboard
@@ -9,34 +28,17 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('konselor/kasus') }}"
-        class="nav-link {{ Route::currentRouteName() == 'konselor/kasus' ? 'active' : '' }}">
-        <i class="nav-icon fas fa-newspaper"></i>
-        <p>
-            Catatan Kasus
-        </p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('konselor/kasus-siswa') }}"
-        class="nav-link {{ Route::currentRouteName() == 'konselor/kasus-siswa' ? 'active' : '' }}">
-        <i class="nav-icon fas fa-pen"></i>
-        <p>
-            Input Kasus
-        </p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('konselor/jadwal-bimbingan') }}"
-        class="nav-link {{ Route::currentRouteName() == 'konselor/jadwal-bimbingan' ? 'active' : '' }}">
-        <i class="nav-icon fas fa-calendar"></i>
+    <a href="{{ route('konselor/jadwal-bimbingan') }}" class="nav-link {{ Route::currentRouteName() == 'konselor/jadwal-bimbingan' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calendar"> @if($jumlahJadwal > 0)
+            <span class="badge">{{ $jumlahJadwal }}</span>
+            @endif</i>
         <p>
             Jadwal Bimbingan
+
         </p>
     </a>
 </li>
+
 <li class="nav-item ">
     <a href="#" class="nav-link ">
         <i class="nav-icon fas fa-mail-bulk"></i>
@@ -53,8 +55,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('konselor/pesan-keluar') }}"
-                class="nav-link {{ Route::currentRouteName() == 'konselor/pesan-keluar' ? 'active' : '' }}">
+            <a href="{{ route('konselor/pesan-keluar') }}" class="nav-link {{ Route::currentRouteName() == 'konselor/pesan-keluar' ? 'active' : '' }}">
                 <i class="fab fa-telegram-plane nav-icon"></i>
                 <p>Keluar</p>
             </a>

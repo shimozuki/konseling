@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalBimbingan;
 use App\Models\Konselor;
+use App\Models\Nilai;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -23,6 +25,16 @@ class KonselorController extends Controller
         $data = ['title' => 'Halaman Tambah Konselor'];
 
         return view('admin.konselor.create', $data);
+    }
+
+    public function showKonselorHistory($id)
+    {
+        $title = "History Konselor";
+        $konselor = Konselor::findOrFail($id);
+        $nilai = Nilai::where('id_konselor', $konselor->id)->avg('nilai');
+        $jadwalBimbingan = JadwalBimbingan::where('id_konselor', $konselor->id)->get();
+
+        return view('admin.konselor_history', compact('konselor', 'nilai', 'jadwalBimbingan', 'title'));
     }
 
     public function store(Request $request)

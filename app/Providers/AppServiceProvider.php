@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View as ViewView;
+use App\Http\View\Composers\MenuComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
             }
             return $view->with('route', $route);
         });
+
+        View::composer('layouts.partials.menu.konselor', MenuComposer::class);
     }
 }

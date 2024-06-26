@@ -19,6 +19,7 @@ use App\Http\Controllers\Mahasiswa\SiswaKasusSiswaController;
 use App\Http\Controllers\Mahasiswa\SiswaPesanController;
 use App\Http\Controllers\Siswa\PesertaBimbinganController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('/register', [RegisterController::class, 'processRegistration'])->name('register.process');
 Route::controller(LoginController::class)->group(function () {
     Route::get('/', 'index')->name('auth/login');
     Route::post('/', 'authenticate')->name('auth/authenticate');
@@ -55,7 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
     Route::controller(KonselorController::class)->group(function () {
         Route::get('konselor', 'index')->name('admin/konselor');
-
+        Route::get('admin/konselor/history/{id}', 'showKonselorHistory')->name('admin.konselor.history');
         Route::get('konselor/tambah', 'create')->name('admin/konselor/tambah');
         Route::post('konselor/simpan', 'store')->name('admin/konselor/simpan');
 
@@ -103,7 +106,9 @@ Route::group(['prefix' => 'konselor', 'middleware' => ['auth', 'konselor']], fun
 
         Route::get('jadwal-bimbingan/ubah/{jadwalBimbingan}', 'edit')->name('konselor/jadwal-bimbingan/ubah');
         Route::patch('jadwal-bimbingan/perbarui/{jadwalBimbingan}', 'update')->name('konselor/jadwal-bimbingan/perbarui');
-
+        Route::post('/jadwal-bimbingan/approve/{id}', 'approve')->name('jadwal-bimbingan.approve');
+        Route::post('/jadwal-bimbingan/finish/{id}', 'finish')->name('jadwal-bimbingan.finish');
+        Route::post('/jadwal-bimbingan/reject/{id}', 'reject')->name('jadwal-bimbingan.reject');
         Route::delete('jadwal-bimbingan/hapus/{jadwalBimbingan}', 'destroy')->name('konselor/jadwal-bimbingan/hapus');
     });
 
@@ -123,6 +128,8 @@ Route::group(['prefix' => 'konselor', 'middleware' => ['auth', 'konselor']], fun
     });
 });
 
+Route::post('/simpan-nilai', 'App\Http\Controllers\NilaiController@store')->name('simpan.nilai');
+
 Route::group(['prefix' => 'siswa', 'middleware' => ['auth', 'siswa']], function () {
     Route::controller(SiswaDashboardController::class)->group(function () {
         Route::get('dashboard', 'index')->name('siswa/dashboard');
@@ -134,7 +141,12 @@ Route::group(['prefix' => 'siswa', 'middleware' => ['auth', 'siswa']], function 
 
     Route::controller(SiswaJadwalBimbinganController::class)->group(function () {
         Route::get('jadwal-bimbingan', 'index')->name('siswa/jadwal-bimbingan');
+
+        Route::get('jadwal-bimbingan/tambah', 'create')->name('konselor/jadwal-bimbingan/tambah');
+        Route::post('jadwal-bimbingan/simpan', 'store')->name('konselor/jadwal-bimbingan/simpan');
     });
+
+
 
     Route::controller(PesertaBimbinganController::class)->group(function () {
         Route::post('peserta-bimbingan', 'store')->name('siswa/peserta-bimbingan/simpan');

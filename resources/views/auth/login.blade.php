@@ -58,6 +58,7 @@
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <a href="{{ route('register.form') }}" class="text-info">Belum Punya Akun</a>
                 </form>
 
             </div>

@@ -6,6 +6,7 @@ use App\Models\Siswa\PesertaBimbingan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class JadwalBimbingan extends Model
 {
@@ -15,8 +16,13 @@ class JadwalBimbingan extends Model
 
     protected $guarded = ['id'];
 
-    public function peserta_bimbingan(): HasMany
+    public function dataUser(): BelongsTo
     {
-        return $this->hasMany(PesertaBimbingan::class, 'id_jadwal_bimbingan');
+        return $this->belongsTo(Siswa::class, 'id_data_user');
+    }
+
+    public function konselor(): BelongsTo
+    {
+        return $this->belongsTo(Konselor::class, 'id_konselor');
     }
 }
