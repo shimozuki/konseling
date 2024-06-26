@@ -16,7 +16,7 @@ class DashboardController extends Controller
 
         $id_konselor = Konselor::select('nama')->where('id_user', $id)->first();
         $siswa = Siswa::count();
-        $data = ['title' => 'Halaman Dashboard', 'siswa' => $siswa, 'nama' => $id_konselor];
+        $data = ['title' => 'Halaman Dashboard', 'siswa' => $siswa, 'nama' => $id_konselor->nama];
 
         return view('konselor.dashboard.index', $data);
     }
