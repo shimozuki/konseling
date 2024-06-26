@@ -16,7 +16,6 @@ class MenusComposer
         $id = Auth::id();
         $id_user = Siswa::select('id')->where('id_user', $id)->first();
         $pesan = Pesan::where('id_tujuan', $id)->count();
-        $pesan = Pesan::where('id_tujuan', $id_user)->count();
         $view->with([
             'pesan' => $pesan,
         ]);

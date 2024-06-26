@@ -1,3 +1,22 @@
+<style>
+    .nav-link {
+        position: relative;
+        padding-left: -30px;
+        /* Tambahkan padding di sebelah kanan untuk ruang badge */
+    }
+
+    .nav-link .badge {
+        background-color: red;
+        border-radius: 50%;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+</style>
 <li class="nav-item">
     <a href="{{ route('siswa/dashboard') }}"
         class="nav-link {{ Route::currentRouteName() == 'siswa/dashboard' ? 'active' : '' }}">
