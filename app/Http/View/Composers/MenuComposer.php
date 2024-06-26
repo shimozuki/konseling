@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\View\Composers;
 
 use Illuminate\View\View;
@@ -14,6 +15,10 @@ class MenuComposer
         $id = Auth::id();
         $id_konselor = Konselor::select('id')->where('id_user', $id)->first();
         $jumlahJadwal = JadwalBimbingan::where('status', '=', 0)->where('id_konselor', $id_konselor->id)->count();
-        $view->with('jumlahJadwal', $jumlahJadwal);
+        $pesan = Pesan::where('id_tujuan', $id)->count();
+        $view->with([
+            'jumlahJadwal' => $jumlahJadwal,
+            'pesan' => $pesan
+        ]);
     }
 }
