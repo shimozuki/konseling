@@ -73,6 +73,37 @@
                                         <a href="#" class="btn btn-success btn-sm approve-btn" data-id="{{ $jb->konselor->id }}" data-jadwal-id="{{ $jb->id }}" data-toggle="modal" data-target="#nilaiModal{{ $jb->konselor->id }}">
                                             <i class="fa fa-check"></i> Nilai Konselor
                                         </a>
+                                        <div class="modal fade" id="nilaiModal{{ $jb->konselor->id }}" tabindex="-1" role="dialog" aria-labelledby="nilaiModalLabel{{ $jb->konselor->id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="nilaiModalLabel{{ $jb->konselor->id }}">Masukkan Nilai Konselor</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form id="formInsertNilai">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <input type="hidden" name="konselor_id" value="{{ $jb->konselor->id }}">
+                                                            <input type="hidden" name="jadwal_id" value="{{ $jb->id }}"> <!-- Tambahkan input untuk jadwal_id -->
+                                                            <div class="form-group">
+                                                                <label for="namaKonselor">Nama Konselor</label>
+                                                                <input type="text" class="form-control" id="namaKonselor" name="nama_konselor" value="{{ $jb->konselor->nama }}" readonly>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="nilai">Nilai</label>
+                                                                <input type="number" class="form-control" id="nilai" name="nilai" placeholder="Masukkan nilai konselor 10 - 100">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                         @endif
                                     </td>
                                 </tr>
@@ -89,37 +120,6 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- Modal -->
-<div class="modal fade" id="nilaiModal{{ $jb->konselor->id }}" tabindex="-1" role="dialog" aria-labelledby="nilaiModalLabel{{ $jb->konselor->id }}" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="nilaiModalLabel{{ $jb->konselor->id }}">Masukkan Nilai Konselor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="formInsertNilai">
-                @csrf
-                <div class="modal-body">
-                    <input type="hidden" name="konselor_id" value="{{ $jb->konselor->id }}">
-                    <input type="hidden" name="jadwal_id" value="{{ $jb->id }}"> <!-- Tambahkan input untuk jadwal_id -->
-                    <div class="form-group">
-                        <label for="namaKonselor">Nama Konselor</label>
-                        <input type="text" class="form-control" id="namaKonselor" name="nama_konselor" value="{{ $jb->konselor->nama }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="nilai">Nilai</label>
-                        <input type="number" class="form-control" id="nilai" name="nilai" placeholder="Masukkan nilai konselor 10 - 100">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
