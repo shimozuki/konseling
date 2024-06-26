@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View as ViewView;
 use App\Http\View\Composers\MenuComposer;
+use App\Http\View\Composers\MenusComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,5 +37,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('layouts.partials.menu.konselor', MenuComposer::class);
+        View::composer('layouts.partials.menu.siswa', MenusComposer::class);
     }
 }

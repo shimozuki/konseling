@@ -20,7 +20,9 @@
 
 <li class="nav-item ">
     <a href="#" class="nav-link ">
-        <i class="nav-icon fas fa-mail-bulk"></i>
+        <i class="nav-icon fas fa-mail-bulk">@if($pesan > 0)
+            <span class="badge">{{ $pesan }}</span>
+            @endif</i>
         <p>
             Pesan
             <i class="right fas fa-angle-left"></i>
@@ -29,7 +31,9 @@
     <ul class="nav nav-treeview">
         <li class="nav-item">
             <a href="{{route('siswa/pesan-masuk')}}" class="nav-link {{ Route::currentRouteName() == 'siswa/pesan-masuk' ? 'active' : '' }}">
-                <i class="fas fa-inbox nav-icon"></i>
+                <i class="fas fa-inbox nav-icon">@if($pesan > 0)
+            <span class="badge">{{ $pesan }}</span>
+            @endif</i>
                 <p>Masuk</p>
             </a>
         </li>
