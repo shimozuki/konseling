@@ -37,23 +37,21 @@ class SiswaJadwalBimbinganController extends Controller
     {
         $validated = $request->validate([
             'id_konselor' => ['required'],
-            'tgl_bimbingan' => ['required', 'date_format:Y-m-d H:i:s'],
+            'tgl_bimbingan' => ['required'],
         ]);
 
         $user = Siswa::where('id_user', Auth::id())->first();
         $validated['id_data_user'] = $user->id;
 
-        // Check for schedule conflicts
         $conflict = JadwalBimbingan::where('id_konselor', $validated['id_konselor'])
             ->where('tgl_bimbingan', $validated['tgl_bimbingan'])
-            ->where('status', 1)
             ->exists();
 
         if ($conflict) {
             return redirect()->back()->withErrors(['msg' => 'Jadwal bimbingan sudah ada pada waktu tersebut.']);
         }
-
         JadwalBimbingan::create($validated);
+
         return redirect()->route('siswa/jadwal-bimbingan')->with('success', 'berhasil menambahkan jadwal bimbingan');
     }
 }
