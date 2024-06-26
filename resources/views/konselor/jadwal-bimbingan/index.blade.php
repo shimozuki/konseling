@@ -74,14 +74,14 @@
                                         <a href="#" class="btn btn-danger btn-sm reject-btn" data-id="{{ $jb->id }}">
                                             <i class="fa fa-times"></i> Tolak
                                         </a>
-                                        @elseif ($jb->status == 4)
+                                        @elseif ($jb->status == 1)
                                         <a class="btn btn-secondary btn-sm" disabled>
                                             <i class="fa fa-check"></i> Approve
                                         </a>
                                         <a class="btn btn-secondary btn-sm" disabled>
                                             <i class="fa fa-times"></i> Tolak
                                         </a>
-                                        <a class="btn btn-secondary btn-sm" disabled>
+                                        <a href="#" class="btn btn-success btn-sm finish-btn" data-id="{{ $jb->id }}">
                                             <i class="fa fa-check"></i> selesai
                                         </a>
                                         @else
