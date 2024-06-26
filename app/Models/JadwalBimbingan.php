@@ -25,4 +25,9 @@ class JadwalBimbingan extends Model
     {
         return $this->belongsTo(Konselor::class, 'id_konselor');
     }
+
+    public function nilai(): BelongsTo
+    {
+        return $this->belongsTo(Nilai::class, 'id');
+    }
 }

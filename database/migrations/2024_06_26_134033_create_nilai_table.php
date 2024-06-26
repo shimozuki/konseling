@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_konselor');
+            $table->unsignedBigInteger('id_jadwal');
             $table->integer('nilai');
             $table->timestamps();
 
             // Define foreign key constraints
+            $table->foreign('id_jadwal')->references('id')->on('tbl_jadwal_bimbingan')->onDelete('cascade');
             $table->foreign('id_konselor')->references('id')->on('tbl_konselor')->onDelete('cascade');
         });
     }

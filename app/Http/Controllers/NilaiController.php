@@ -24,6 +24,7 @@ class NilaiController extends Controller
         $nilai = new Nilai();
         $nilai->id_konselor = $request->konselor_id;
         $nilai->nilai = $request->nilai;
+        $nilai->id_jadwal = $request->jadwal_id;
         $nilai->save();
 
         // Response success (optional)

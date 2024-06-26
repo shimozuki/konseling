@@ -43,6 +43,7 @@
                                     <th>Tanggal Bimbingan</th>
                                     <th>Nama Peserta</th>
                                     <th>Status</th>
+                                    <th>Nilai</th>
                                     <th>Opsi</th>
                                 </tr>
                             </thead>
@@ -66,6 +67,14 @@
                                         <p class="text-danger">Ditolak</p>
                                         @endif
                                     </td>
+                                    <td>
+                                        @if ($jb->nilai && $jb->nilai->nilai !== null)
+                                        {{ $jb->nilai->nilai }}
+                                        @else
+                                        Belum Ada Nilai
+                                        @endif
+                                    </td>
+
                                     <td>
                                         @if ($jb->status == 0)
                                         <a href="#" class="btn btn-success btn-sm approve-btn" data-id="{{ $jb->id }}">

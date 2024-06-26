@@ -16,7 +16,7 @@ class JadwalBimbinganController extends Controller
         $id = Auth::id();
 
         $id_konselor = Konselor::select('id')->where('id_user', $id)->first();
-        $jadwalBimbingan = JadwalBimbingan::with('dataUser', 'konselor')->where('id_konselor', $id_konselor->id)->get();
+        $jadwalBimbingan = JadwalBimbingan::with('dataUser', 'konselor', 'nilai')->where('id_konselor', $id_konselor->id)->get();
 
         $data = [
             'title' => 'Halaman Jadwal Bimbingan',
