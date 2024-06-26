@@ -125,6 +125,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (Notification.permission === 'default') {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    new Notification('Notifications enabled!', {
+                        body: 'You will now receive notifications.',
+                        icon: '{{ asset("public/logo.png") }}'
+                    });
+                }
+            });
+        } else if (Notification.permission === 'granted') {
+            new Notification('Welcome back!', {
+                body: 'You have notifications enabled.',
+                icon: '{{ asset("public/logo.png") }}'
+            });
+        } else {
+            alert('Notifications are blocked. Please enable them in your browser settings.');
+        }
+    });
+</script>
+<script>
     $(document).ready(function() {
         $('#formInsertNilai').on('submit', function(e) {
             e.preventDefault();
