@@ -36,5 +36,19 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (Notification.permission !== "granted") {
+            alert('Please allow notifications for a better experience.');
+            Notification.requestPermission().then(function(result) {
+                if (result === 'granted') {
+                    new Notification('Terima kasih telah mengizinkan pemberitahuan!');
+                } else if (result === 'denied') {
+                    alert('Anda telah menolak pemberitahuan.');
+                }
+            });
+        }
+    });
+</script>
     <!-- /.content -->
 @endsection

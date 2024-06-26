@@ -120,31 +120,32 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- Modal -->
-
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notificationModalLabel">Allow Notifications</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please allow notifications for a better experience. Here is how you can enable notifications:</p>
+                <ul>
+                    <li>Click on the lock icon next to the URL in your browser.</li>
+                    <li>Select "Site settings" from the dropdown menu.</li>
+                    <li>Find the "Notifications" section and choose "Allow".</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="enableNotifications">Enable Notifications</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        if (Notification.permission === 'default') {
-            Notification.requestPermission().then(permission => {
-                if (permission === 'granted') {
-                    new Notification('Notifications enabled!', {
-                        body: 'You will now receive notifications.',
-                        icon: '{{ asset("public/logo.png") }}'
-                    });
-                }
-            });
-        } else if (Notification.permission === 'granted') {
-            new Notification('Welcome back!', {
-                body: 'You have notifications enabled.',
-                icon: '{{ asset("public/logo.png") }}'
-            });
-        } else {
-            alert('Notifications are blocked. Please enable them in your browser settings.');
-        }
-    });
-</script>
 <script>
     $(document).ready(function() {
         $('#formInsertNilai').on('submit', function(e) {
@@ -161,7 +162,7 @@
                         title: 'Berhasil!',
                         text: 'Nilai konselor berhasil disimpan!',
                     }).then(() => {
-                        
+
                         location.reload(); // Refresh halaman setelah berhasil
                     });
                 },
