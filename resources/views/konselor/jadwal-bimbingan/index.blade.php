@@ -160,7 +160,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Tolak!'
+                confirmButtonText: 'Ya'
             }).then((result) => {
                 if (result.isConfirmed) {
                     finishJadwal(id); // Panggil fungsi rejectJadwal jika dikonfirmasi
@@ -181,7 +181,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Tolak!'
+                confirmButtonText: 'Ya'
             }).then((result) => {
                 if (result.isConfirmed) {
                     rejectJadwal(id); // Panggil fungsi rejectJadwal jika dikonfirmasi
