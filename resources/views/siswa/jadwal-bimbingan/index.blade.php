@@ -140,7 +140,7 @@
                         title: 'Berhasil!',
                         text: 'Nilai konselor berhasil disimpan!',
                     }).then(() => {
-                        $('#nilaiModal{{ $jb->konselor->id }}').modal('hide');
+                        
                         location.reload(); // Refresh halaman setelah berhasil
                     });
                 },
