@@ -38,6 +38,7 @@ class SiswaJadwalBimbinganController extends Controller
         $validated = $request->validate([
             'id_konselor' => ['required'],
             'tgl_bimbingan' => ['required'],
+            'bimbingan' => ['required'],
         ]);
 
         $user = Siswa::where('id_user', Auth::id())->first();
