@@ -91,7 +91,7 @@
                                         <a class="btn btn-secondary btn-sm" disabled>
                                             <i class="fa fa-times"></i> Tolak
                                         </a>
-                                        <a class="btn btn-success btn-sm finish-btn" disabled>
+                                        <a class="btn btn-secondary btn-sm" disabled>
                                             <i class="fa fa-check"></i> selesai
                                         </a>
                                         @endif
