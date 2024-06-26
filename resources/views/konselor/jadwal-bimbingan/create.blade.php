@@ -57,6 +57,25 @@
                                     </div>
                                     @enderror
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="bimbingan">Opsi Bimbingan</label>
+                                        <select class="form-control @error('bimbingan') is-invalid @enderror" name="bimbingan" id="bimbingan">
+                                            <option value="">Pilih Opsi Bimbingan</option>
+                                            <option value="1">
+                                                Online
+                                            </option>
+                                            <option value="0">
+                                                Offline
+                                            </option>
+                                        </select>
+                                    </div>
+                                    @error('id_konselor')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-body -->

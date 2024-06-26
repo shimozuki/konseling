@@ -45,6 +45,7 @@
                                     <th>Tanggal Bimbingan</th>
                                     <th>Nama Peserta</th>
                                     <th>Status</th>
+                                    <th>Pertemuan</th>
                                     <th>#</th>
                                 </tr>
                             </thead>
@@ -66,6 +67,13 @@
                                         <p class="text-success">Sesi Selesai</p>
                                         @else
                                         <p class="text-danger">Ditolak</p>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($jb->bimbingan == 0)
+                                        <p class="text-danger">Offline</p>
+                                        @else
+                                        <p class="text-success">Online</p>
                                         @endif
                                     </td>
                                     <td>

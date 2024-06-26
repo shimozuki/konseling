@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('id_konselor');
             $table->foreignId('id_data_user');
             $table->timestamp('tgl_bimbingan');
+            $table->tinyInteger('bimbingan');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
 

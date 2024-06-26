@@ -44,6 +44,7 @@
                                     <th>Nama Peserta</th>
                                     <th>Status</th>
                                     <th>Nilai</th>
+                                    <th>Pertemuan</th>
                                     <th>Opsi</th>
                                 </tr>
                             </thead>
@@ -74,7 +75,13 @@
                                         Belum Ada Nilai
                                         @endif
                                     </td>
-
+                                    <td>
+                                        @if ($jb->bimbingan == 0)
+                                        <p class="text-danger">Offline</p>
+                                        @else
+                                        <p class="text-success">Online</p>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($jb->status == 0)
                                         <a href="#" class="btn btn-success btn-sm approve-btn" data-id="{{ $jb->id }}">
