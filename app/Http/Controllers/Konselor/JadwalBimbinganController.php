@@ -27,10 +27,6 @@ class JadwalBimbinganController extends Controller
         return view('konselor.jadwal-bimbingan.index', $data);
     }
 
-   
-
-    
-
     public function edit(JadwalBimbingan $jadwalBimbingan)
     {
         $data = ['title' => 'Halaman Ubah Kasus', 'jadwalBimbingan' => $jadwalBimbingan];
